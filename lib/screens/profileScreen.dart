@@ -831,7 +831,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Colors.purple,
+            activeThumbColor: Colors.purple,
           ),
         ],
       ),
@@ -1434,8 +1434,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                           ],
                                         ),
                                       ),
-                                    )
-                                    .toList(),
+                                    ),
                                 const SizedBox(height: 15),
                                 TextButton(
                                   onPressed: () =>

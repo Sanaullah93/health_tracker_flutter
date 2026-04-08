@@ -6,7 +6,7 @@ import 'package:health_tracker_fyp/screens/authentication/login_Screen.dart';
 import 'package:health_tracker_fyp/screens/main_navigation_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();

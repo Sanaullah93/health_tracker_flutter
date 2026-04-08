@@ -935,8 +935,8 @@ class _GoalSettingScreenState extends State<GoalSettingScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _breakdownItem("Steps/week", "${(steps * 7).toString()}"),
-                _breakdownItem("Calories/week", "${(calories * 7).toString()}"),
+                _breakdownItem("Steps/week", (steps * 7).toString()),
+                _breakdownItem("Calories/week", (calories * 7).toString()),
                 _breakdownItem("Water/week", "${(water * 7 ~/ 1000)}L"),
               ],
             ),

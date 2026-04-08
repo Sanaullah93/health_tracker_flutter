@@ -333,7 +333,7 @@ class _ActivityscreenState extends State<Activityscreen> {
           Switch(
             value: _isListening,
             onChanged: (value) => _togglePedometer(),
-            activeColor: Color(0xFF4CAF50),
+            activeThumbColor: Color(0xFF4CAF50),
           ),
         ],
       ),

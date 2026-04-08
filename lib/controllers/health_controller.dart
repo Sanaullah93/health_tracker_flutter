@@ -64,7 +64,7 @@ class HealthController extends GetxController {
     _initializeRecommendations();
   }
 
-  bool get isReady => _firestore != null && _auth != null;
+  bool get isReady => _auth != null;
 
   // ========== INITIALIZE RECOMMENDATIONS ==========
   void _initializeRecommendations() {
@@ -149,15 +149,15 @@ class HealthController extends GetxController {
         };
 
         // Calculate total calories and meal distribution
-        ['breakfast', 'lunch', 'dinner', 'snacks'].forEach((mealType) {
+        for (var mealType in ['breakfast', 'lunch', 'dinner', 'snacks']) {
           if (mealsData[mealType] != null) {
             final meal = mealsData[mealType];
             final calories = (meal['calories'] ?? 0) as int;
             consumedCalories.value += calories;
             mealTypes[mealType] = calories;
-            todayMeals.add("${mealType}: ${meal['food']} ($calories cal)");
+            todayMeals.add("$mealType: ${meal['food']} ($calories cal)");
           }
-        });
+        }
       }
 
       // 4. Load Today's Health Data (water, sleep)

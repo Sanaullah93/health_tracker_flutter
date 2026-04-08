@@ -832,8 +832,9 @@ class _HealthStatisticsScreenState extends State<HealthStatisticsScreen> {
                       reservedSize: 30,
                       getTitlesWidget: (value, meta) {
                         final index = value.toInt();
-                        if (index < 0 || index >= _weeklyData.length)
+                        if (index < 0 || index >= _weeklyData.length) {
                           return SizedBox();
+                        }
                         return Padding(
                           padding: const EdgeInsets.only(top: 8.0),
                           child: Text(
@@ -1053,7 +1054,7 @@ class _HealthStatisticsScreenState extends State<HealthStatisticsScreen> {
             ],
           ),
           const SizedBox(height: 16),
-          ..._weeklyData.map((day) => _dailyDetailItem(day)).toList(),
+          ..._weeklyData.map((day) => _dailyDetailItem(day)),
         ],
       ),
     );

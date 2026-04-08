@@ -208,7 +208,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: 40),
 
                   // Form
-                  Container(
+                  SizedBox(
                     height: _currentStep == 0 ? 240 : 320,
                     child: PageView(
                       controller: _pageController,

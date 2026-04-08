@@ -3,8 +3,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:health_tracker_fyp/controllers/health_controller.dart';
-import 'package:health_tracker_fyp/screens/main_navigation_screen.dart';
-import 'package:health_tracker_fyp/screens/meal/meal_log_screen.dart';
 import 'package:health_tracker_fyp/screens/suplesh_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 

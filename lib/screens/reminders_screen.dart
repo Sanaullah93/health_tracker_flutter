@@ -292,7 +292,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
       return scheduledCount;
     } catch (e) {
       print("Error scheduling notifications: $e");
-      throw e;
+      rethrow;
     }
   }
 
@@ -968,7 +968,7 @@ class _RemindersScreenState extends State<RemindersScreen> {
                     },
                     activeTrackColor: reminder['color'].withOpacity(0.5),
                     inactiveTrackColor: Colors.grey.shade300,
-                    activeColor: reminder['color'],
+                    activeThumbColor: reminder['color'],
                   ),
                 ),
               ],

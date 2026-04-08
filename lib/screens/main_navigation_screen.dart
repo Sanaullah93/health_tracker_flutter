@@ -308,7 +308,7 @@ class _MainNavigationScreenState extends State<MainNavigationScreen> {
       trailing: Switch(
         value: enabled,
         onChanged: (value) {},
-        activeColor: Colors.blue,
+        activeThumbColor: Colors.blue,
       ),
     );
   }

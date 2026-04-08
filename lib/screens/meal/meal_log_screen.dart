@@ -994,7 +994,7 @@ class _MealLogScreenState extends State<MealLogScreen>
                     ],
                   ),
                 );
-              }).toList(),
+              }),
             ],
           ),
         ),
@@ -1195,11 +1195,11 @@ class _MealLogScreenState extends State<MealLogScreen>
                 ),
                 TextButton(
                   onPressed: () => Get.back(result: true),
-                  child: const Text("Yes, Save"),
                   style: TextButton.styleFrom(
                     backgroundColor: Colors.red,
                     foregroundColor: Colors.white,
                   ),
+                  child: const Text("Yes, Save"),
                 ),
               ],
             ),

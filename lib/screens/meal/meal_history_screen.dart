@@ -64,7 +64,7 @@ class _MealHistoryScreenState extends State<MealHistoryScreen> {
       List<Map<String, dynamic>> meals = [];
 
       for (final doc in query.docs) {
-        final data = doc.data() as Map<String, dynamic>;
+        final data = doc.data();
         final date = DateTime.parse(doc.id);
 
         // Extract all meals for this date
@@ -296,13 +296,13 @@ class _MealHistoryScreenState extends State<MealHistoryScreen> {
                             _statItem(
                               "🔥",
                               "Total Cal",
-                              "${totalCalories.toStringAsFixed(0)}",
+                              totalCalories.toStringAsFixed(0),
                               Colors.white,
                             ),
                             _statItem(
                               "⚡",
                               "Avg/Day",
-                              "${avgCalories.toStringAsFixed(0)}",
+                              avgCalories.toStringAsFixed(0),
                               Colors.white,
                             ),
                           ],
@@ -918,7 +918,7 @@ class _MealHistoryScreenState extends State<MealHistoryScreen> {
             const SizedBox(height: 15),
 
             // Meal List
-            ...meals.map((meal) => _buildMealItem(meal)).toList(),
+            ...meals.map((meal) => _buildMealItem(meal)),
 
             // No meals message if empty
             if (meals.isEmpty)

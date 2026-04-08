@@ -12,6 +12,8 @@ import 'package:health_tracker_fyp/screens/health_tips_screen.dart';
 class DashboardScreen extends StatelessWidget {
   final HealthController healthController = Get.find();
 
+  DashboardScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -272,7 +274,7 @@ class DashboardScreen extends StatelessWidget {
               ),
               _buildMiniStat(
                 Icons.directions_walk,
-                "${healthController.distanceKm.value.toStringAsFixed(1)}",
+                healthController.distanceKm.value.toStringAsFixed(1),
                 "km Walked",
                 Color(0xFF2196F3),
               ),
