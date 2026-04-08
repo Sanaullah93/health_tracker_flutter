@@ -2,51 +2,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.health_tracker_fyp">
 
-    <!-- Internet & Network -->
+    <!-- Permissions (your existing permissions are good) -->
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
-
-
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
-
-
-
-
-
-
-    <!-- Location -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
-    <!-- Health permissions -->
     <uses-permission android:name="android.permission.health.READ_HEART_RATE"/>
     <uses-permission android:name="android.permission.health.WRITE_HEART_RATE"/>
     <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_HISTORY"/>
-
-    <!-- Sensors -->
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
     <uses-permission android:name="android.permission.BODY_SENSORS" />
     <uses-permission android:name="android.permission.BODY_SENSORS_BACKGROUND"
         tools:ignore="BackgroundBodySensors" />
-
-    <!-- Foreground services (optional) -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_HEALTH" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
-
-    <!-- For reading data in background -->
     <uses-permission android:name="android.permission.health.READ_HEALTH_DATA_IN_BACKGROUND"/>
-
-    <!-- Others -->
-    <uses-permission android:name="android.permission.VIBRATE" />
+    
+    <!-- ✅ NOTIFICATION PERMISSIONS ADDED -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    
+    <!-- For Android 13+ -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 
     <application
-        android:label="health_tracker_fyp"
-        android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Health Tracker"
+        android:name="${applicationName}" 
+        android:icon="@mipmap/ic_launcher"
+        android:enableOnBackInvokedCallback="true"
+        android:usesCleartextTraffic="true">
+
+        <!-- ✅ NOTIFICATION RECEIVERS ADDED HERE -->
+        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver" 
+            android:exported="true"/>
+        <receiver android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ✅ Background service for notifications (optional but recommended) -->
+        <service
+            android:name="com.dexterous.flutterlocalnotifications.ForegroundService"
+            android:exported="false" />
+
+        <!-- ✅ Main Notification Channel Metadata -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="health_reminders" />
 
         <!-- Health Connect permission usage alias -->
         <activity-alias

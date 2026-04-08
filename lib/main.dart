@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:health_tracker_fyp/controllers/health_controller.dart';
+import 'package:health_tracker_fyp/screens/main_navigation_screen.dart';
+import 'package:health_tracker_fyp/screens/meal/meal_log_screen.dart';
+import 'package:health_tracker_fyp/screens/suplesh_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:health_tracker_fyp/screens/authentication/signUp_Screen.dart';
 
 // 🔔 Notification Plugin Initialize
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -14,7 +17,6 @@ Future<void> main() async {
 
   // 🔹 Initialize Firebase
   await Firebase.initializeApp();
-
   // 🔹 Ask for notification permission (Android 13+)
   await Permission.notification.request();
 
@@ -28,6 +30,7 @@ Future<void> main() async {
 
   // 🔹 Initialize notifications
   await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  Get.put(HealthController(), permanent: true);
 
   // 🔹 Run the app
   runApp(const MyApp());
@@ -38,10 +41,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HealthController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Health Tracker',
-      home: const SignUpScreen(), // 👈 Start screen
+      home: SplashScreen(), // 👈 Start screen
     );
   }
 }
